@@ -2,6 +2,7 @@ dartemis_transformer
 ====================
 [![Build Status](https://drone.io/github.com/denniskaselow/dartemis_transformer/status.png)](https://drone.io/github.com/denniskaselow/dartemis_transformer/latest)
 [![Coverage Status](https://coveralls.io/repos/denniskaselow/dartemis_transformer/badge.svg?branch=master)](https://coveralls.io/r/denniskaselow/dartemis_transformer?branch=master)
+[![Pub](https://img.shields.io/pub/v/dartemis_transformer.svg)](https://pub.dartlang.org/packages/dartemis_transformer)
 
 dartemis_transformer is a transformer for [dartemis](https://pub.dartlang.org/packages/dartemis).
 

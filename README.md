@@ -3,7 +3,7 @@ dartemis_transformer
 [![Build Status](https://drone.io/github.com/denniskaselow/dartemis_transformer/status.png)](https://drone.io/github.com/denniskaselow/dartemis_transformer/latest)
 [![Coverage Status](https://coveralls.io/repos/denniskaselow/dartemis_transformer/badge.svg?branch=master)](https://coveralls.io/r/denniskaselow/dartemis_transformer?branch=master)
 
-dartemis_transformer is a transformer for (dartemis)[https://pub.dartlang.org/packages/dartemis].
+dartemis_transformer is a transformer for [dartemis](https://pub.dartlang.org/packages/dartemis).
 
 The transformer converts your `Component`s into `PooledComponent`s and it creates the code
 required to initialize `Mapper`s, `Manager`s and `EntitySystem`s in your `Manager`s and 

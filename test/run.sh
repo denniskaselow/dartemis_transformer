@@ -4,7 +4,7 @@
 set -e
 
 # Run the tests.
-dart --checked test/_all_tests.dart
+dart --checked test/all_tests.dart
 
 # Install dart_coveralls; gather and send coverage data.
 if [ "$COVERALLS_TOKEN" ]; then
@@ -13,5 +13,5 @@ if [ "$COVERALLS_TOKEN" ]; then
     --token $COVERALLS_TOKEN \
     --retry 2 \
     --exclude-test-files \
-    test/test_all.dart
+    test/all_tests.dart
 fi

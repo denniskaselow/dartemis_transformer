@@ -1,4 +1,4 @@
-library transformer;
+library dartemis_transformer;
 
 import 'dart:async';
 
@@ -14,4 +14,3 @@ part 'src/transformer/initialize_method_converter.dart';
 part 'src/transformer/dartemis_transformer.dart';
 part 'src/transformer/utils/asset_wrapper.dart';
 part 'src/transformer/utils/field_collecting_ast_visitor.dart';
-

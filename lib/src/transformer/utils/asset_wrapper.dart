@@ -1,4 +1,4 @@
-part of transformer;
+part of dartemis_transformer;
 
 class AssetWrapper {
   Asset asset;

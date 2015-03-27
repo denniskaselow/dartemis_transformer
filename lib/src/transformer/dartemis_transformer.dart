@@ -1,4 +1,4 @@
-part of transformer;
+part of dartemis_transformer;
 
 /// The transformer converts your [Component]s into [PooledComponent]s and it creates the code
 /// required to initializeThis transformer will create/assign [Mapper], [EntitySystem] and [Manager]

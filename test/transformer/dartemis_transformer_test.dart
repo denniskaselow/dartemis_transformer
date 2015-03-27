@@ -5,7 +5,7 @@ import "dart:async";
 import "package:unittest/unittest.dart";
 import "package:mockito/mockito.dart";
 import "package:barback/barback.dart" show AggregateTransform, Asset, AssetId, BarbackSettings;
-import "package:dartemis_transformer/transformer.dart";
+import '../../lib/dartemis_transformer.dart';
 
 void main() {
   group('DartemisTransformer', () {

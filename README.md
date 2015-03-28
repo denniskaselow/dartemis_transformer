@@ -16,7 +16,7 @@ a list of those libraries to the transformer:
 
 ```yaml
 transformers:
-- dartemis
+- dartemis_transformer
     additionalLibraries:
     - otherLib/otherLib.dart
     - moreLibs/moreLibs.dart
@@ -29,7 +29,7 @@ It's also possible to disable parts of the transformer:
 
 ```yaml
 transformers:
-- dartemis
+- dartemis_transformer
     pooling: false
     initializeMethod: false
 ```
@@ -46,7 +46,7 @@ The transformer will not analyze whether a variable in the body is locally scope
 `pooledComponent`.
 
 * The transformer is not tested with cases where a library is imported
-using an alias. Please file a [new issue](https://github.com/denniskaselow/dartemis/issues/new)
+using an alias. Please file a [new issue](https://github.com/denniskaselow/dartemis_transformer/issues/new)
 if it doesn't work and you have to use an alias.
 
 * Debugging a transformed file in the Dart Editor is not possible because lines don't match

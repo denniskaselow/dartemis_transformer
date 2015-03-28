@@ -9,7 +9,7 @@ part of dartemis_transformer;
 /// a list of those libraries to the transformer:
 ///
 ///     transformers:
-///     - dartemis
+///     - dartemis_transformer
 ///         additionalLibraries:
 ///         - otherLib/otherLib.dart
 ///         - moreLibs/moreLibs.dart

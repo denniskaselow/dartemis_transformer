@@ -1,5 +1,5 @@
 name: dartemis_transformer
-version: 0.1.0+1
+version: 0.1.0+2
 author: Dennis Kaselow <Dennis.Kaselow+dartemis@gmail.com>
 description: A transformer to modify and generate code that turns Components into PooledComponents and initializes EntitySystems and Managers.
 homepage: https://github.com/denniskaselow/dartemis_transformer

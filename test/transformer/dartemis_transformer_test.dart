@@ -2,7 +2,7 @@ library dartemis_transformer_test;
 
 import "dart:async";
 
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import "package:mockito/mockito.dart";
 import "package:barback/barback.dart" show AggregateTransform, Asset, AssetId, BarbackSettings;
 import '../../lib/dartemis_transformer.dart';
@@ -200,6 +200,7 @@ class SimpleManager extends Manager {
     om = world.getManager(OtherManager);
   }
 }
+
 class OtherManager extends Manager {
   Mapper<Position> pm;
   @override void initialize() {
@@ -207,6 +208,7 @@ class OtherManager extends Manager {
     pm = new Mapper<Position>(Position, world);
   }
 }
+
 class SimpleComponent extends PooledComponent {
   factory SimpleComponent() {
     SimpleComponent pooledComponent = new Pooled.of(SimpleComponent, _ctor);
@@ -215,6 +217,7 @@ class SimpleComponent extends PooledComponent {
   static SimpleComponent _ctor() => new SimpleComponent._();
   SimpleComponent._();
 }
+
 class SimpleSystem extends EntitySystem {
   SimpleManager sm;
   Mapper<Position> pm;
@@ -224,7 +227,9 @@ class SimpleSystem extends EntitySystem {
     sm = world.getManager(SimpleManager);
   }
 }
+
 class OtherSystem extends VoidEntitySystem {}
+
 class SomePooledComponent extends PooledComponent {
   static SomePooledComponent _ctor() => new SomePooledComponent._();
   SomePooledComponent._();
@@ -242,6 +247,7 @@ class SimpleManager extends Manager {
     om = world.getManager(OtherManager);
   }
 }
+
 class OtherManager extends Manager {
   Mapper<Position> pm;
   @override void initialize() {
@@ -249,7 +255,9 @@ class OtherManager extends Manager {
     pm = new Mapper<Position>(Position, world);
   }
 }
+
 class SimpleComponent extends Component {}
+
 class SimpleSystem extends EntitySystem {
   SimpleManager sm;
   Mapper<Position> pm;
@@ -259,7 +267,9 @@ class SimpleSystem extends EntitySystem {
     sm = world.getManager(SimpleManager);
   }
 }
+
 class OtherSystem extends VoidEntitySystem {}
+
 class SomePooledComponent extends PooledComponent {
   static SomePooledComponent _ctor() => new SomePooledComponent._();
   SomePooledComponent._();
@@ -272,9 +282,11 @@ class SimpleManager extends Manager {
   OtherManager om;
   SimpleSystem ss;
 }
+
 class OtherManager extends Manager {
   Mapper<Position> pm;
 }
+
 class SimpleComponent extends PooledComponent {
   factory SimpleComponent() {
     SimpleComponent pooledComponent = new Pooled.of(SimpleComponent, _ctor);
@@ -283,11 +295,14 @@ class SimpleComponent extends PooledComponent {
   static SimpleComponent _ctor() => new SimpleComponent._();
   SimpleComponent._();
 }
+
 class SimpleSystem extends EntitySystem {
   SimpleManager sm;
   Mapper<Position> pm;
 }
+
 class OtherSystem extends VoidEntitySystem {}
+
 class SomePooledComponent extends PooledComponent {
   static SomePooledComponent _ctor() => new SomePooledComponent._();
   SomePooledComponent._();

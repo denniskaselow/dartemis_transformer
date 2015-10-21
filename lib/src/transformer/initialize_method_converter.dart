@@ -48,10 +48,11 @@ class InitializeMethodConverter {
     var propertyKeyword = null;
     var operatorKeyword = null;
     var name = AstFactory.identifier3('initialize');
+    var typeParameters = null;
     var parameters = AstFactory.formalParameterList();
     var block = AstFactory.block();
     var body = AstFactory.blockFunctionBody(block);
-    return new MethodDeclaration(comment, metadata, externalKeyword, modifierKeyword, returnType, propertyKeyword, operatorKeyword, name, parameters, body);
+    return new MethodDeclaration(comment, metadata, externalKeyword, modifierKeyword, returnType, propertyKeyword, operatorKeyword, name, typeParameters, parameters, body);
   }
 
   ExpressionStatement _createSuperInitialize() {

@@ -1,6 +1,6 @@
 library initiale_method_converter_test;
 
-import "package:unittest/unittest.dart";
+import "package:test/test.dart";
 import '../../lib/dartemis_transformer.dart';
 import 'package:analyzer/analyzer.dart';
 import 'package:dart_style/dart_style.dart';

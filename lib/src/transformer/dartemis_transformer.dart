@@ -34,44 +34,38 @@ class DartemisTransformer extends AggregateTransformer implements DeclaringAggre
   DartemisTransformer.asPlugin(this._settings);
 
   @override
-  apply(AggregateTransform transform) {
+  apply(AggregateTransform transform) async {
     List<String> additionalLibraris = [];
     if (null != _settings.configuration && null != _settings.configuration['additionalLibraries']) {
       additionalLibraris.addAll(_settings.configuration['additionalLibraries']);
     }
-    return _analyzeAdditionalLibraries(additionalLibraris, transform).then((_) {
-      return transform.primaryInputs.toList().then((assets) {
-        return _processAssets(assets, transform);
-      });
-    });
+    await _analyzeAdditionalLibraries(additionalLibraris, transform);
+    var assets = await transform.primaryInputs.toList();
+    return _processAssets(assets, transform);
   }
 
-  Future _analyzeAdditionalLibraries(List<String> additionalLibraris, AggregateTransform transform) {
-    return Future.forEach(additionalLibraris, (String additionalLibrary) {
+  Future _analyzeAdditionalLibraries(List<String> additionalLibraris, AggregateTransform transform) async {
+    return Future.forEach(additionalLibraris, (String additionalLibrary) async {
       var assetId = new AssetId.parse(additionalLibrary.replaceFirst('/', '|lib/'));
-      return transform.getInput(assetId).then((asset) {
-        return asset.readAsString().then((content) {
-          var partPaths = [assetId.path];
-          partPaths.addAll(collectPartsContent(content));
-          return Future.forEach(partPaths, (String partPath) => transform
-              .getInput(new AssetId(assetId.package, partPath))
-              .then((partAsset) => partAsset.readAsString())
-              .then((partContent) => analyze(partContent)));
-        });
-      });
+      var asset = await transform.getInput(assetId);
+      var content = await asset.readAsString();
+      var partPaths = [assetId.path];
+      partPaths.addAll(collectPartsContent(content));
+      return Future.forEach(partPaths, (String partPath) => transform
+          .getInput(new AssetId(assetId.package, partPath))
+          .then((partAsset) => partAsset.readAsString())
+          .then((partContent) => analyze(partContent)));
     });
   }
 
-  Future _processAssets(List<Asset> assets, AggregateTransform transform) {
-    return Future.wait(assets.map((asset) {
-      return asset.readAsString().then((content) {
-        return new AssetWrapper(asset, analyze(content));
-      });
-    })).then((List<AssetWrapper> assetWrappers) {
-      assetWrappers.forEach((asset) {
-        processContent(transform, asset);
-      });
-    });
+  Future _processAssets(List<Asset> assets, AggregateTransform transform) async {
+    var assetWrappers = await Future.wait(assets.map((asset) async {
+      var content = await asset.readAsString();
+      return new AssetWrapper(asset, analyze(content));
+    }));
+    for (var asset in assetWrappers) {
+      processContent(transform, asset);
+    };
   }
 
   List<String> collectPartsContent(String content) {

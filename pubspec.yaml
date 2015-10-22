@@ -4,7 +4,7 @@ author: Dennis Kaselow <Dennis.Kaselow+dartemis@gmail.com>
 description: A transformer to modify and generate code that turns Components into PooledComponents and initializes EntitySystems and Managers.
 homepage: https://github.com/denniskaselow/dartemis_transformer
 environment:
-  sdk: '>=1.12.0 <2.0.0'
+  sdk: '>=1.10.0 <2.0.0'
 dependencies:
   analyzer: ^0.26.0
   barback: ^0.15.2

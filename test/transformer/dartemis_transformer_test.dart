@@ -147,7 +147,8 @@ const SYSTEM_WITH_CLASSES_FROM_OTHER_LIBRARY_RESULT = '''
 class SimpleSystem extends EntitySystem {
   SimpleManager sm;
   OtherSystem os;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     os = world.getSystem(OtherSystem);
     sm = world.getManager(SimpleManager);
@@ -194,7 +195,8 @@ const EVERYTHING_COMBINED_RESULT = '''
 class SimpleManager extends Manager {
   OtherManager om;
   SimpleSystem ss;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     ss = world.getSystem(SimpleSystem);
     om = world.getManager(OtherManager);
@@ -203,7 +205,8 @@ class SimpleManager extends Manager {
 
 class OtherManager extends Manager {
   Mapper<Position> pm;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     pm = new Mapper<Position>(Position, world);
   }
@@ -221,7 +224,8 @@ class SimpleComponent extends PooledComponent {
 class SimpleSystem extends EntitySystem {
   SimpleManager sm;
   Mapper<Position> pm;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     pm = new Mapper<Position>(Position, world);
     sm = world.getManager(SimpleManager);
@@ -241,7 +245,8 @@ const EVERYTHING_COMBINED_RESULT_WITHOUT_POOLING = '''
 class SimpleManager extends Manager {
   OtherManager om;
   SimpleSystem ss;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     ss = world.getSystem(SimpleSystem);
     om = world.getManager(OtherManager);
@@ -250,7 +255,8 @@ class SimpleManager extends Manager {
 
 class OtherManager extends Manager {
   Mapper<Position> pm;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     pm = new Mapper<Position>(Position, world);
   }
@@ -261,7 +267,8 @@ class SimpleComponent extends Component {}
 class SimpleSystem extends EntitySystem {
   SimpleManager sm;
   Mapper<Position> pm;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     pm = new Mapper<Position>(Position, world);
     sm = world.getManager(SimpleManager);

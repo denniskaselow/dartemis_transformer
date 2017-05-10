@@ -1,15 +1,16 @@
 name: dartemis_transformer
-version: 0.1.1
+version: 0.1.1-2
 author: Dennis Kaselow <Dennis.Kaselow+dartemis@gmail.com>
 description: A transformer to modify and generate code that turns Components into PooledComponents and initializes EntitySystems and Managers.
 homepage: https://github.com/denniskaselow/dartemis_transformer
 environment:
   sdk: '>=1.12.0 <2.0.0'
 dependencies:
-  analyzer: ^0.26.0
-  barback: ^0.15.2
-  dart_style: ^0.2.0
-  dartemis: ^0.7.1
+  analyzer: '>=0.27.0 < 0.30.0'
+  barback: ^0.15.2+9
+  dart_style: ^0.2.11+1
+  dartemis:
+    path: ../dartemis
 dev_dependencies:
-  test: ^0.12.5
-  mockito: ^0.11.0
+  test: ^0.12.16
+  mockito: ^1.0.1

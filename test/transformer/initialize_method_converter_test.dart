@@ -95,7 +95,8 @@ class SimpleSystem extends VoidEntitySystem {
 const SYSTEM_WITHOUT_INITIALIZE_WITH_MAPPER_RESULT = '''
 class SimpleSystem extends VoidEntitySystem {
   Mapper<Position> pm;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     pm = new Mapper<Position>(Position, world);
   }
@@ -111,7 +112,8 @@ class SimpleSystem extends VoidEntitySystem with SomeMixin {
 const SYSTEM_WITH_MIXIN_WITHOUT_INITIALIZE_WITH_MAPPER_RESULT = '''
 class SimpleSystem extends VoidEntitySystem with SomeMixin {
   Mapper<Position> pm;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     pm = new Mapper<Position>(Position, world);
   }
@@ -128,7 +130,8 @@ class SimpleSystem extends VoidEntitySystem {
 const SYSTEM_WITH_INITIALIZE_WITH_MAPPER_RESULT = '''
 class SimpleSystem extends VoidEntitySystem {
   Mapper<Position> pm;
-  @override void initialize() {
+  @override
+  void initialize() {
     pm = new Mapper<Position>(Position, world);
   }
 }
@@ -143,7 +146,8 @@ class SimpleManager extends Manager {
 const MANAGER_WITHOUT_INITIALIZE_WITH_MAPPER_RESULT = '''
 class SimpleManager extends Manager {
   Mapper<Position> pm;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     pm = new Mapper<Position>(Position, world);
   }
@@ -159,7 +163,8 @@ class SimpleSystem extends VoidEntitySystem {
 const SYSTEM_WITHOUT_INITIALIZE_WITH_MANAGER_RESULT = '''
 class SimpleSystem extends VoidEntitySystem {
   SimpleManager sm;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     sm = world.getManager(SimpleManager);
   }
@@ -175,7 +180,8 @@ class SimpleSystem extends VoidEntitySystem {
 const SYSTEM_WITHOUT_INITIALIZE_WITH_OTHER_SYSTEM_RESULT = '''
 class SimpleSystem extends VoidEntitySystem {
   OtherSystem om;
-  @override void initialize() {
+  @override
+  void initialize() {
     super.initialize();
     om = world.getSystem(OtherSystem);
   }

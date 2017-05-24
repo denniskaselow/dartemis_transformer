@@ -10,7 +10,9 @@ dependencies:
   barback: ^0.15.2+9
   dart_style: ^1.0.6
   dartemis:
-    path: ../dartemis
+    git:
+      url: git://github.com/denniskaselow/dartemis.git
+      ref: develop
 dev_dependencies:
   test: ^0.12.16
   mockito: ^1.0.1

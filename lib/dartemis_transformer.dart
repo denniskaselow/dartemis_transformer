@@ -5,7 +5,8 @@ import 'dart:async';
 import 'package:barback/barback.dart';
 import 'package:analyzer/analyzer.dart';
 import 'package:analyzer/src/generated/scanner.dart';
-import 'package:analyzer/src/generated/testing/ast_factory.dart';
+import 'package:analyzer/src/dart/ast/ast.dart';
+import 'package:analyzer/src/generated/testing/ast_test_factory.dart';
 import 'package:analyzer/src/generated/testing/token_factory.dart';
 import 'package:dart_style/dart_style.dart';
 

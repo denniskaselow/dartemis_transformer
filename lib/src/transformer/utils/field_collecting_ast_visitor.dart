@@ -11,7 +11,7 @@ class FieldCollectingAstVisitor extends SimpleAstVisitor {
   @override
   visitFieldDeclaration(FieldDeclaration node) {
     if (null != node.fields.type) {
-      var typeName = node.fields.type.name.name;
+      var typeName = (node.fields.type as TypeName).name.name;
       if (typeName == 'Mapper') {
         mappers.add(node);
       } else if (_isOfType(nodes, typeName, 'Manager')) {

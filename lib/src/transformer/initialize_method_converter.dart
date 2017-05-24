@@ -22,14 +22,14 @@ class InitializeMethodConverter {
 
     var initField = (FieldDeclaration node, ExpressionStatement createAssignment(String name, String type)) {
       var managerName = node.fields.variables[0].name.name;
-      var managerType = node.fields.type.name.name;
+      var managerType = (node.fields.type as TypeName).name.name;
       initializeStatements.insert(0, createAssignment(managerName, managerType));
     };
     fieldCollector.managers.forEach((manager) => initField(manager, (String name, String type) => _createManagerAssignment(name, type)));
     fieldCollector.systems.forEach((system) => initField(system, (String name, String type) => _createSystemAssignment(name, type)));
     fieldCollector.mappers.forEach((FieldDeclaration mapper) {
       var mapperName = mapper.fields.variables[0].name.name;
-      var mapperType = mapper.fields.type.typeArguments.arguments[0].name.name;
+      var mapperType = ((mapper.fields.type as TypeName).typeArguments.arguments[0] as TypeName).name.name;
       initializeStatements.insert(0, _createMapperAssignment(mapperName, mapperType));
     });
 
@@ -41,30 +41,30 @@ class InitializeMethodConverter {
 
   MethodDeclaration _createInitializeMethodDeclaration() {
     var comment = null;
-    var metadata = [AstFactory.annotation(AstFactory.identifier3('override'))];
+    var metadata = [AstTestFactory.annotation(AstTestFactory.identifier3('override'))];
     var externalKeyword = null;
     var modifierKeyword = null;
-    var returnType = AstFactory.typeName4('void');
+    var returnType = AstTestFactory.typeName4('void');
     var propertyKeyword = null;
     var operatorKeyword = null;
-    var name = AstFactory.identifier3('initialize');
+    var name = AstTestFactory.identifier3('initialize');
     var typeParameters = null;
-    var parameters = AstFactory.formalParameterList();
-    var block = AstFactory.block();
-    var body = AstFactory.blockFunctionBody(block);
-    return new MethodDeclaration(comment, metadata, externalKeyword, modifierKeyword, returnType, propertyKeyword, operatorKeyword, name, typeParameters, parameters, body);
+    var parameters = AstTestFactory.formalParameterList();
+    var block = AstTestFactory.block();
+    var body = AstTestFactory.blockFunctionBody(block);
+    return new MethodDeclarationImpl(comment, metadata, externalKeyword, modifierKeyword, returnType, propertyKeyword, operatorKeyword, name, typeParameters, parameters, body);
   }
 
   ExpressionStatement _createSuperInitialize() {
-    var expression = AstFactory.methodInvocation(AstFactory.identifier3('super'), 'initialize');
-    return AstFactory.expressionStatement(expression);
+    var expression = AstTestFactory.methodInvocation(AstTestFactory.identifier3('super'), 'initialize');
+    return AstTestFactory.expressionStatement(expression);
   }
 
   ExpressionStatement _createMapperAssignment(String mapperName, String mapperType) {
-    var leftHandSide = AstFactory.identifier3(mapperName);
-    var rightHandSide = AstFactory.instanceCreationExpression2(Keyword.NEW, AstFactory.typeName3(AstFactory.identifier3('Mapper'), [AstFactory.typeName4(mapperType)]), [AstFactory.identifier3(mapperType), AstFactory.identifier3('world')]);
-    var assigmentStatement = AstFactory.assignmentExpression(leftHandSide, TokenType.EQ, rightHandSide);
-    return AstFactory.expressionStatement(assigmentStatement);
+    var leftHandSide = AstTestFactory.identifier3(mapperName);
+    var rightHandSide = AstTestFactory.instanceCreationExpression2(Keyword.NEW, AstTestFactory.typeName3(AstTestFactory.identifier3('Mapper'), [AstTestFactory.typeName4(mapperType)]), [AstTestFactory.identifier3(mapperType), AstTestFactory.identifier3('world')]);
+    var assigmentStatement = AstTestFactory.assignmentExpression(leftHandSide, TokenType.EQ, rightHandSide);
+    return AstTestFactory.expressionStatement(assigmentStatement);
   }
 
   ExpressionStatement _createManagerAssignment(String managerName, String managerType) =>
@@ -74,9 +74,9 @@ class InitializeMethodConverter {
     _createAssignmentFromWorldMethod(systemName, systemType, 'getSystem');
 
   ExpressionStatement _createAssignmentFromWorldMethod(String fieldName, String fieldType, String worldMethod) {
-    var leftHandSide = AstFactory.identifier3(fieldName);
-    var rightHandSide = AstFactory.methodInvocation(AstFactory.identifier3('world'), worldMethod, [AstFactory.identifier3(fieldType)]);
-    var assigmentStatement = AstFactory.assignmentExpression(leftHandSide, TokenType.EQ, rightHandSide);
-    return AstFactory.expressionStatement(assigmentStatement);
+    var leftHandSide = AstTestFactory.identifier3(fieldName);
+    var rightHandSide = AstTestFactory.methodInvocation(AstTestFactory.identifier3('world'), worldMethod, [AstTestFactory.identifier3(fieldType)]);
+    var assigmentStatement = AstTestFactory.assignmentExpression(leftHandSide, TokenType.EQ, rightHandSide);
+    return AstTestFactory.expressionStatement(assigmentStatement);
   }
 }
